@@ -1,0 +1,13 @@
+{% extends 'order/base.html' %}
+{% block body %}
+<br>
+<form method="post">
+	{% csrf_token %}
+	{{orders.as_p }}
+	
+	
+	{{items.as_p}}
+	<input type="submit" value="Save">
+</form>
+{% endblock body %}   
+

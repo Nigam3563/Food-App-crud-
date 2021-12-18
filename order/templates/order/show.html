@@ -1,0 +1,32 @@
+{% extends 'order/base.html' %}
+{% block body %}
+
+    {% for item in orders %}<br>
+    <div class="card" style="width: 18rem;"> 
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h1 class="card-title">CUSTOMER NAME:    {{item.order.customer_name}}</h1>
+            <p class="card-text">
+                <h2>ORDER NUMBER:    {{item.order.order_number}}</h2>
+                <h2>ORDER DATE:       {{item.order.order_date}}</h2>
+                <h2>ORDER ADDRESS:     {{item.order.address}}</h2> 
+                <h2>ORDER QUANTITY:    {{item.quantity}}</h2> 
+                <h2>Product NAME:     {{item.item_name}}</h2>
+                <a href="{% url 'order:update_detail' item.id %}"class="btn btn-success">Update</a>
+            </p>
+              
+        </div>
+      </div>
+        
+    {% endfor %}
+    {% endblock body %}   
+
+
+
+
+{%if messages%}
+{%for message in messages%}
+<div class="alert alert-{{message.tags}}">{{message}}</div>
+{%endfor%}
+{%endif%}
+        

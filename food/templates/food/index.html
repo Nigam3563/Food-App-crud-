@@ -1,0 +1,43 @@
+{% extends 'food/base.html'%}
+
+
+    {% block body %}
+    
+    {% for item in item_list %}
+    <div class="row">
+        <div class="col-md-3 offset-md-1">
+             <img class="card" height="200px" src="{{item.item_image}}"/>
+        </div>
+          
+        <div class="col-md-4">
+            <h3> {{item.item_name}}</h3>
+            <h2>{{item.item_des}}</h2>
+            <h2>${{item.item_price}}</h2> 
+
+        </div>
+        <!--Details URLS-->
+        <div class="col-md-2">
+            <a href="{% url 'food:detail' item.id %}" class="btn btn-success">Details</a>
+
+        </div>
+
+         
+    </div>
+  
+        
+    {% endfor %}
+    {% endblock %}   
+                    <!--URLS FOR FETCHING DATA-->
+    <!-- <ul>
+        <li>
+         <a href="">{{item.item_name}} {{item.item_des}} {{item.item_price}}</a>
+        
+        </li>
+    </ul> -->
+
+{%if messages%}
+{%for message in messages%}
+<div class="alert alert-{{message.tags}}">{{message}}</div>
+{%endfor%}
+{%endif%}
+    
